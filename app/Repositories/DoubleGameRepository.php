@@ -21,14 +21,14 @@ class DoubleGameRepository extends AbstractRepository{
                                                 WHEN MAX(color) = 2 THEN 'black'
                                             END) as color_name")
                                 ->selectRaw('MAX(roll) as roll')
-                                ->selectRaw('created_at_blaze')
-                                ->selectRaw('HOUR(created_at_blaze) as hour_by_created_at_blaze')
-                                ->selectRaw('MINUTE(created_at_blaze) as minute_by_created_at_blaze')
-                                ->selectRaw("DATE_FORMAT(created_at_blaze, '%i:%s') as minute_and_secods")
-                                ->selectRaw('SECOND(created_at_blaze) as second_by_created_at_blaze')
-                                ->whereBetween('created_at_blaze',[$initDate,$finalDate])
-                                ->groupBy('created_at_blaze')
-                                ->orderBy('created_at_blaze','ASC')
+                                ->selectRaw('created_at')
+                                ->selectRaw('HOUR(created_at) as hour_by_created_at')
+                                ->selectRaw('MINUTE(created_at) as minute_by_created_at')
+                                ->selectRaw("DATE_FORMAT(created_at, '%i:%s') as minute_and_secods")
+                                ->selectRaw('SECOND(created_at) as second_by_created_at')
+                                ->whereBetween('created_at',[$initDate,$finalDate])
+                                ->groupBy('created_at')
+                                ->orderBy('created_at','ASC')
                                 ->get()->toArray();
         return $resultsByDay; 
     }

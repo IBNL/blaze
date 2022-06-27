@@ -28,7 +28,7 @@ class DoubleGameService
 
     public function insertBatch($data){
         foreach ($data->sortBy('created_at') as $item) {
-            $doubleGame = $this->findCustom('id_blaze',$item['id']);
+            $doubleGame = DoubleGame::where('id_blaze',$item['id'])->where('server_seed',$item['server_seed'])->first();
             if(!$doubleGame){
                 $dataDoubleGameCreate = collect();
                 $dataDoubleGameCreate->put('id_blaze',$item['id'])
@@ -54,18 +54,6 @@ class DoubleGameService
                 'code' => 201,
                 'model' => $doubleGame
             ];
-        } catch (Exception $e) {
-            return [
-                'code' => 422,
-                'message' => $e->getMessage()
-            ];
-        }
-    }
-
-    public function findCustom($column,$value){
-        try {
-            $doubleGame = $this->doubleGameRepository->getByColumn($column,$value);
-            return $doubleGame;
         } catch (Exception $e) {
             return [
                 'code' => 422,
