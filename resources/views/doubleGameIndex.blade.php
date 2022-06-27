@@ -20,7 +20,7 @@
                     <tr>
                         <th scope="row">{{$i}}:00 ~ {{$i}}:59</th>
                         @foreach ($resultByDay as $item)
-                            @if(($item['hour_by_created_at_blaze']-3) == $i && $item['minute_by_created_at_blaze'] <= 59)
+                            @if($item['hour_by_created_at'] == $i && $item['minute_by_created_at'] <= 59)
                                 <td scope="col" style ="background-color:{{$item['color_name']}};border-color: "></td>
                             @endif
                         @endforeach
