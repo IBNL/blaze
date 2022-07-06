@@ -27,7 +27,7 @@ class DoubleGameRepository extends AbstractRepository{
                                 ->selectRaw("DATE_FORMAT(created_at, '%i:%s') as minute_and_secods")
                                 ->selectRaw('SECOND(created_at) as second_by_created_at')
                                 ->whereBetween('created_at',[$initDate,$finalDate])
-                                ->groupBy('created_at')
+                                ->groupBy('created_at','created_at_blaze')
                                 ->orderBy('created_at','ASC')
                                 ->get()->toArray();
         return $resultsByDay; 
