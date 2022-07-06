@@ -31,4 +31,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'double_game' => [
+        'token' => env('KING_DOUBLE_TOKEN'),
+        'chatId' => env('CHAT_ID')
+    ],
 ];

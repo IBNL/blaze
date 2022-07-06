@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
 
     protected function shortSchedule(\Spatie\ShortSchedule\ShortSchedule $shortSchedule)
     {
-        $shortSchedule->command('command:getRolled')->everySeconds(5);
+        $shortSchedule->command('command:getRolled')->everySeconds(5)->withoutOverlapping();
     }
 
     /**
